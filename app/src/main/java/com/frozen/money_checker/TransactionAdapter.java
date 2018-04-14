@@ -9,27 +9,27 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
-public class TransactionAdapter extends ArrayAdapter<Transactions>{
-    public TransactionAdapter(@NonNull Context context, List<Transactions> transactions) {
-        super(context, 0 ,transactions);
+public class TransactionAdapter extends ArrayAdapter<Transaction> {
+    TransactionAdapter(@NonNull Context context, List<Transaction> transactions) {
+        super(context, 0, transactions);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Transactions transactions = getItem(position);
+        Transaction transaction = getItem(position);
 
         if (convertView == null)
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false );
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
 
-        TextView title = (TextView)convertView.findViewById(R.id.title);
-        TextView sum = (TextView)convertView.findViewById(R.id.sum);
+        TextView title = convertView.findViewById(R.id.title);
+        TextView sum = convertView.findViewById(R.id.sum);
 
-        title.setText(transactions.getTitle());
-        sum.setText(transactions.getSum());
+        assert transaction != null;
+        title.setText(transaction.getTitle());
+        sum.setText(String.valueOf(transaction.getSum()));
 
         return convertView;
     }
