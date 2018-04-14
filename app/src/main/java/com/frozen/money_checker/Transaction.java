@@ -1,10 +1,10 @@
 package com.frozen.money_checker;
 
-public class Transactions {
+public class Transaction {
     private String title;
-    private String sum;
+    private int sum;
 
-    public Transactions(String title, String sum) {
+    Transaction(String title, int sum) {
         this.title = title;
         this.sum = sum;
     }
@@ -17,11 +17,11 @@ public class Transactions {
         this.title = title;
     }
 
-    public String getSum() {
+    public int getSum() {
         return sum;
     }
 
-    public void setSum(String sum) {
+    public void setSum(int sum) {
         this.sum = sum;
     }
 }
